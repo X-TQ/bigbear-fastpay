@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5308b523-cc28-4068-a3ec-4ab49e9f3799" name="Changes" comment="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fastpay-demo/src/main/java/com/fastpay/demo/service/FastPayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-demo/src/main/java/com/fastpay/demo/service/FastPayService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fastpay-demo/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-demo/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fastpay-demo/src/main/resources/templates/api_pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-demo/src/main/resources/templates/api_pay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fastpay-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-server/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +83,7 @@
     "Spring Boot.FastPayDemoApplication.executor": "Debug",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/xiongtengqiang/priwork/Bigbear/project-code/bigbear-fastpay/fastpay-demo/src/main/resources/templates",
+    "last_opened_file_path": "/Users/xiongtengqiang/priwork/Bigbear/project-code/bigbear-fastpay",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,13 +92,14 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA 24.1.7.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/fastpay-demo/src/main/resources/templates" />
       <recent name="$PROJECT_DIR$/fastpay-demo/src/main/resources" />
       <recent name="$PROJECT_DIR$/fastpay-server/src/main/resources" />
@@ -164,7 +169,7 @@
       <option name="presentableId" value="Default" />
       <updated>1765080553823</updated>
       <workItem from="1765080554910" duration="54000" />
-      <workItem from="1765080630345" duration="46260000" />
+      <workItem from="1765080630345" duration="49156000" />
     </task>
     <task id="LOCAL-00001" summary="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
       <option name="closed" value="true" />
@@ -174,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765250675461</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
+      <option name="closed" value="true" />
+      <created>1765254066202</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765254066202</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
