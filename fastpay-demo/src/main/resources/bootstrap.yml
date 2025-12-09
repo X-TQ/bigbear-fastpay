@@ -1,5 +1,3 @@
 spring:
-  application:
-    name: fastpay-demo
   profiles:
-    active: prod
+    active: dev

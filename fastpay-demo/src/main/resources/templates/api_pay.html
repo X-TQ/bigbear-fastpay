@@ -404,7 +404,7 @@
                     const response = await fetch('/api-pay/query?outTradeNo=' + currentOutTradeNo);
                     const result = await response.json();
 
-                    if (result.success && result.data.status === 1) {
+                    if (result.success) {
                         // 支付成功
                         clearInterval(checkTimer);
                         showPaySuccess();

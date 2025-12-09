@@ -1,5 +1,3 @@
 spring:
-  application:
-    name: fastpay-server
   profiles:
     active: dev
