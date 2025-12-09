@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5308b523-cc28-4068-a3ec-4ab49e9f3799" name="Changes" comment="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fastpay-demo/src/main/java/com/fastpay/demo/service/FastPayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-demo/src/main/java/com/fastpay/demo/service/FastPayService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fastpay-demo/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-demo/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fastpay-demo/src/main/resources/templates/api_pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-demo/src/main/resources/templates/api_pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fastpay-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/fastpay-server/src/main/resources/bootstrap.yml" afterDir="false" />
-    </list>
+    <list default="true" id="5308b523-cc28-4068-a3ec-4ab49e9f3799" name="Changes" comment="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,20 +18,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "X-TQ"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;X-TQ&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/X-TQ/bigbear-fastpay.git",
-    "accountId": "fb26aae0-fb00-4fea-b039-ee8e03e382e2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/X-TQ/bigbear-fastpay.git&quot;,
+    &quot;accountId&quot;: &quot;fb26aae0-fb00-4fea-b039-ee8e03e382e2&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -145,6 +144,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MerchantServiceImpl" />
+        <item itemvalue="Application.MerchantServiceImpl" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +169,8 @@
       <option name="presentableId" value="Default" />
       <updated>1765080553823</updated>
       <workItem from="1765080554910" duration="54000" />
-      <workItem from="1765080630345" duration="49156000" />
+      <workItem from="1765080630345" duration="49296000" />
+      <workItem from="1765257031851" duration="2520000" />
     </task>
     <task id="LOCAL-00001" summary="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
       <option name="closed" value="true" />
@@ -187,11 +188,63 @@
       <option name="project" value="LOCAL" />
       <updated>1765254066202</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
+      <option name="closed" value="true" />
+      <created>1765256891321</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765256891321</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。">
+      <option name="closed" value="true" />
+      <created>1765257421637</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765257421637</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1396842c-3843-4138-9eec-34a571b92ee9" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1396842c-3843-4138-9eec-34a571b92ee9">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: FAST 易支付是一款面向个人开发者和小型商户的免签支付平台，通过普通收款码即可实现收款通知自动回调。资金直达个人账户，无需提现，支持绝大多数商城系统对接。" />
