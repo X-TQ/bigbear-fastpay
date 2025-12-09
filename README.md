@@ -9,6 +9,15 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/X-TQ/bigbear-fastpay">
+    <img src="https://img.shields.io/badge/GitHub-bigbear--fastpay-blue?logo=github" alt="GitHub">
+  </a>
+  <a href="https://gitee.com/nchfly/bigbear-fastpay">
+    <img src="https://img.shields.io/badge/Gitee-bigbear--fastpay-red?logo=gitee" alt="Gitee">
+  </a>
+</p>
+
+<p align="center">
   <a href="#在线演示">在线演示</a> •
   <a href="#功能特性">功能特性</a> •
   <a href="#系统截图">系统截图</a> •
@@ -326,7 +335,12 @@ bigbear-fastpay/
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-repo/bigbear-fastpay.git
+# GitHub
+git clone https://github.com/X-TQ/bigbear-fastpay.git
+
+# Gitee（国内镜像）
+git clone https://gitee.com/nchfly/bigbear-fastpay.git
+
 cd bigbear-fastpay
 ```
 
