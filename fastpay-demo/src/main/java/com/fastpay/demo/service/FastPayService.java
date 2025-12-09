@@ -116,8 +116,7 @@ public class FastPayService {
         try {
             // 服务端查询接口只需要 merchantNo 和 outTradeNo
 
-            //StringBuilder url = new StringBuilder(config.getQueryUrl());
-            StringBuilder url = new StringBuilder("http://localhost:9090/fastpay-server/api/pay/query");
+            StringBuilder url = new StringBuilder(config.getQueryUrl());
             url.append("?merchantNo=").append(params.get("merchantNo"));
             url.append("&outTradeNo=").append(params.get("outTradeNo"));
 
