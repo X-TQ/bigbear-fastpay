@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在跳转支付...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .loading {
+            text-align: center;
+            color: #fff;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="spinner"></div>
+        <p>正在跳转到支付页面...</p>
+    </div>
+
+    <!-- 自动提交表单 -->
+    <form id="payForm" th:action="${submitUrl}" method="POST" style="display: none;">
+        <input type="hidden" name="merchantNo" th:value="${params.merchantNo}">
+        <input type="hidden" name="outTradeNo" th:value="${params.outTradeNo}">
+        <input type="hidden" name="amount" th:value="${params.amount}">
+        <input type="hidden" name="subject" th:value="${params.subject}">
+        <input type="hidden" name="payType" th:value="${params.payType}">
+        <input type="hidden" name="timestamp" th:value="${params.timestamp}">
+        <input type="hidden" name="returnUrl" th:value="${params.returnUrl}">
+        <input type="hidden" name="sign" th:value="${params.sign}">
+    </form>
+
+    <script>
+        // 页面加载后自动提交表单
+        document.getElementById('payForm').submit();
+    </script>
+</body>
+</html>

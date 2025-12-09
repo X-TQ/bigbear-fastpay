@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付结果 - FAST 易支付 Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .result-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .result-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .result-icon.success {
+            color: #52c41a;
+        }
+        .result-icon.fail {
+            color: #ff4d4f;
+        }
+        .result-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .result-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        .order-info {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        .order-info p {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        .order-info p:last-child {
+            border-bottom: none;
+        }
+        .order-info .label {
+            color: #666;
+        }
+        .order-info .value {
+            color: #333;
+            font-weight: 500;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-card">
+        <div th:if="${success}">
+            <div class="result-icon success">✅</div>
+            <h1 class="result-title">支付成功</h1>
+            <p class="result-desc">您的订单已支付成功</p>
+        </div>
+        <div th:unless="${success}">
+            <div class="result-icon fail">❌</div>
+            <h1 class="result-title">支付失败</h1>
+            <p class="result-desc">订单支付未完成或已取消</p>
+        </div>
+
+        <div class="order-info" th:if="${orderNo != null}">
+            <p>
+                <span class="label">平台订单号</span>
+                <span class="value" th:text="${orderNo}">-</span>
+            </p>
+            <p th:if="${outTradeNo != null}">
+                <span class="label">商户订单号</span>
+                <span class="value" th:text="${outTradeNo}">-</span>
+            </p>
+        </div>
+
+        <a href="/" class="back-btn">返回首页</a>
+    </div>
+</body>
+</html>

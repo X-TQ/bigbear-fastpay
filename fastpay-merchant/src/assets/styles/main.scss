@@ -1,0 +1,525 @@
+/**
+ * Fast 易支付 - 商户平台全局样式
+ * 参考微信/支付宝开发者平台设计风格
+ */
+
+// 变量定义
+$primary-color: #1677ff;
+$success-color: #52c41a;
+$warning-color: #faad14;
+$danger-color: #ff4d4f;
+$info-color: #909399;
+
+$bg-color: #f0f2f5;
+$header-bg: #fff;
+$sidebar-bg: #001529;
+
+// 全局样式重置
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+// 滚动条美化
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c4cc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// 开发者平台布局
+.developer-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// 顶部导航栏（类似微信开发者平台）
+.developer-header {
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .logo-text {
+        margin-left: 12px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .logo-badge {
+        margin-left: 8px;
+        padding: 2px 8px;
+        background: #f0f5ff;
+        color: #1677ff;
+        font-size: 12px;
+        border-radius: 4px;
+      }
+    }
+
+    .nav-menu {
+      margin-left: 48px;
+      display: flex;
+      gap: 8px;
+
+      .nav-item {
+        padding: 8px 16px;
+        color: #666;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.3s;
+        font-size: 14px;
+
+        &:hover {
+          color: #1677ff;
+          background: #f0f5ff;
+        }
+
+        &.active {
+          color: #1677ff;
+          background: #f0f5ff;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .header-action {
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 6px;
+      color: #666;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #f5f5f5;
+        color: #1677ff;
+      }
+    }
+
+    .user-dropdown {
+      display: flex;
+      align-items: center;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #f5f5f5;
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1677ff 0%, #69b1ff 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .user-name {
+        margin-left: 8px;
+        color: #333;
+        font-size: 14px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+// 主内容区
+.developer-main {
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  background: $bg-color;
+}
+
+// 内容容器
+.developer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+// 页面标题区
+.page-header {
+  margin-bottom: 24px;
+
+  .page-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+// 卡片样式
+.dev-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+  margin-bottom: 16px;
+
+  .card-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .card-icon {
+        color: #1677ff;
+      }
+    }
+  }
+
+  .card-body {
+    padding: 24px;
+  }
+}
+
+// 统计卡片网格
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+
+  .stat-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+
+    &.primary { color: #1677ff; }
+    &.success { color: #52c41a; }
+    &.warning { color: #faad14; }
+    &.danger { color: #ff4d4f; }
+  }
+
+  .stat-extra {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #999;
+  }
+}
+
+// 信息列表
+.info-list {
+  .info-item {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      width: 120px;
+      color: #666;
+      flex-shrink: 0;
+    }
+
+    .info-value {
+      flex: 1;
+      color: #333;
+      word-break: break-all;
+
+      &.copyable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .copy-btn {
+          color: #1677ff;
+          cursor: pointer;
+          font-size: 14px;
+
+          &:hover {
+            color: #4096ff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 表格工具栏
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+// 分页
+.pagination-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+// 登录页面
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+.login-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background: linear-gradient(135deg, #1677ff 0%, #69b1ff 100%);
+  color: #fff;
+
+  .login-brand {
+    text-align: center;
+
+    .brand-icon {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .brand-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .brand-desc {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+  }
+
+  .login-features {
+    margin-top: 60px;
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 15px;
+
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.login-right {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  background: #fff;
+
+  .login-form-wrapper {
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
+
+    .login-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .login-form {
+      .el-input__wrapper {
+        padding: 12px 15px;
+      }
+
+      .el-button--primary {
+        width: 100%;
+        height: 44px;
+        font-size: 16px;
+      }
+    }
+
+    .login-footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+    }
+  }
+}
+
+// 金额文本
+.amount-text {
+  color: #faad14;
+  font-weight: 500;
+}
+
+// API 密钥展示
+.api-key-display {
+  background: #f5f7fa;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 13px;
+  color: #333;
+  word-break: break-all;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  .key-text {
+    flex: 1;
+  }
+
+  .key-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+}
+
+// 空状态
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+
+  .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: #ddd;
+  }
+
+  .empty-text {
+    font-size: 14px;
+  }
+}

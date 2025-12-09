@@ -1,0 +1,472 @@
+/**
+ * Fast 易支付 - 管理后台全局样式
+ */
+
+// 变量定义
+$primary-color: #409eff;
+$success-color: #67c23a;
+$warning-color: #e6a23c;
+$danger-color: #f56c6c;
+$info-color: #909399;
+
+$bg-color: #f5f7fa;
+$sidebar-bg: #304156;
+$sidebar-active-bg: #1890ff;
+
+// 全局样式重置
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// 滚动条美化
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c4cc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f7fa;
+}
+
+// 布局相关
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// 侧边栏 - 浅色调
+.admin-sidebar {
+  width: 220px;
+  height: 100%;
+  background: #fff;
+  border-right: 1px solid #e8e8e8;
+  transition: width 0.3s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &.collapsed {
+    width: 64px;
+  }
+
+  .logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-bottom: 1px solid #f0f0f0;
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      margin-left: 12px;
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+
+  .el-menu {
+    border-right: none;
+    background: transparent;
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+
+    .el-menu-item {
+      margin: 4px 0;
+      border-radius: 8px;
+      height: 44px;
+      line-height: 44px;
+      color: #606266;
+      
+      &:hover {
+        background: #f5f7fa;
+        color: #3b82f6;
+      }
+
+      .el-icon {
+        color: inherit;
+        font-size: 18px;
+      }
+    }
+
+    .el-menu-item.is-active {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      color: #3b82f6;
+      font-weight: 500;
+    }
+  }
+
+  .sidebar-footer {
+    padding: 16px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+
+    .author-text {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}
+
+// 主内容区
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: $bg-color;
+}
+
+// 顶部导航
+.admin-header {
+  height: 60px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .collapse-btn {
+      font-size: 20px;
+      cursor: pointer;
+      color: #606266;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .breadcrumb {
+      margin-left: 20px;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #f5f7fa;
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .username {
+        margin-left: 8px;
+        color: #303133;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// 内容区
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+// 页面标题
+.page-header {
+  margin-bottom: 20px;
+
+  .page-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #303133;
+  }
+
+  .page-desc {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #909399;
+  }
+}
+
+// 卡片样式
+.page-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  
+  .card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #ebeef5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #303133;
+    }
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+}
+
+// 统计卡片
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #fff;
+
+    &.blue { background: linear-gradient(135deg, #409eff 0%, #66b1ff 100%); }
+    &.green { background: linear-gradient(135deg, #67c23a 0%, #85ce61 100%); }
+    &.orange { background: linear-gradient(135deg, #e6a23c 0%, #ebb563 100%); }
+    &.purple { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  }
+
+  .stat-info {
+    margin-left: 16px;
+    flex: 1;
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 600;
+      color: #303133;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #909399;
+      margin-top: 4px;
+    }
+  }
+}
+
+// 表格工具栏
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+// 状态标签
+.status-tag {
+  &.success { color: $success-color; }
+  &.warning { color: $warning-color; }
+  &.danger { color: $danger-color; }
+  &.info { color: $info-color; }
+}
+
+// 分页
+.pagination-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+// 登录页面 - 现代简洁风格
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+  position: relative;
+  overflow: hidden;
+
+  // 装饰性背景元素
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+}
+
+.login-card {
+  width: 400px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  padding: 48px 40px;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+
+  .login-header {
+    text-align: center;
+    margin-bottom: 36px;
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #64748b;
+      margin-top: 8px;
+    }
+  }
+
+  .login-form {
+    .el-form-item {
+      margin-bottom: 20px;
+    }
+
+    .el-input__wrapper {
+      padding: 14px 16px;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #e2e8f0;
+      transition: all 0.2s;
+
+      &:hover {
+        box-shadow: 0 0 0 1px #cbd5e1;
+      }
+
+      &.is-focus {
+        box-shadow: 0 0 0 2px #3b82f6;
+      }
+    }
+
+    .el-button--primary {
+      width: 100%;
+      height: 48px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      border: none;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}

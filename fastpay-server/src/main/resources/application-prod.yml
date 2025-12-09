@@ -1,0 +1,81 @@
+# Fast 易支付 - 服务端配置
+server:
+  port: 7001
+  servlet:
+    context-path: /fastpay-server
+
+
+spring:
+  application:
+    name: fastpay-server
+  
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bigbear_fastpay?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username:
+    password:
+  
+  # Jackson 配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    serialization:
+      write-dates-as-timestamps: false
+
+# MyBatis Plus 配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  type-aliases-package: com.fastpay.entity
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Knife4j API 文档配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.fastpay.controller
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# Fast 易支付 自定义配置
+fastpay:
+  # JWT 配置
+  jwt:
+    secret: FastPaySecretKey2024ForJwtTokenGeneration
+    # Token 有效期（小时）
+    expire-hours: 12
+  
+  # 管理员默认账号
+  admin:
+    username: fastpay
+    password: 123456@
+  
+  # 支付配置
+  pay:
+    # 订单超时时间（分钟）
+    order-timeout-minutes: 3
+    # 支付页面域名（商户前端地址）
+    page-domain: http://121.4.28.146/fastpay-merchant
+  
+  # 监听软件回调配置
+  notify:
+    # 监听软件回调地址（完整URL，用于模版展示）
+    callback-url: http://121.4.28.146/fastpay-server/api/notify/callback

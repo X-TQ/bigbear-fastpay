@@ -1,0 +1,115 @@
+package com.fastpay.controller.merchant;
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fastpay.common.PageResult;
+import com.fastpay.common.Result;
+import com.fastpay.dto.ShopDTO;
+import com.fastpay.entity.Shop;
+import com.fastpay.service.ShopService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * 商户平台 - 店铺管理控制器
+ *
+ * @author FastPay
+ */
+@Tag(name = "商户平台-店铺管理", description = "商户店铺的增删改查操作")
+@RestController
+@RequestMapping("/api/merchant/shop")
+public class MerchantShopController {
+
+    private final ShopService shopService;
+
+    public MerchantShopController(ShopService shopService) {
+        this.shopService = shopService;
+    }
+
+    /**
+     * 分页查询店铺列表
+     */
+    @Operation(summary = "分页查询店铺", description = "分页查询商户店铺列表")
+    @GetMapping("/page")
+    public Result<PageResult<Shop>> page(
+            @RequestParam(defaultValue = "1") Integer current,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(required = false) String shopName,
+            HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        Page<Shop> page = shopService.pageShops(new Page<>(current, size), merchantId, shopName);
+        PageResult<Shop> result = new PageResult<>(page.getRecords(), page.getTotal(), page.getSize(), page.getCurrent());
+        return Result.success(result);
+    }
+
+    /**
+     * 获取店铺列表
+     */
+    @Operation(summary = "店铺列表", description = "获取商户所有店铺")
+    @GetMapping("/list")
+    public Result<List<Shop>> list(HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        List<Shop> list = shopService.listByMerchant(merchantId);
+        return Result.success(list);
+    }
+
+    /**
+     * 获取店铺详情
+     */
+    @Operation(summary = "店铺详情", description = "获取店铺详情")
+    @GetMapping("/{id}")
+    public Result<Shop> getById(@PathVariable Long id, HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        Shop shop = shopService.getShopDetail(id, merchantId);
+        return Result.success(shop);
+    }
+
+    /**
+     * 创建店铺
+     */
+    @Operation(summary = "创建店铺", description = "创建新店铺")
+    @PostMapping
+    public Result<Shop> create(@Valid @RequestBody ShopDTO dto, HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        Shop shop = shopService.createShop(dto, merchantId);
+        return Result.success("创建成功", shop);
+    }
+
+    /**
+     * 更新店铺
+     */
+    @Operation(summary = "更新店铺", description = "更新店铺信息")
+    @PutMapping("/{id}")
+    public Result<Void> update(@PathVariable Long id, @Valid @RequestBody ShopDTO dto, HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        dto.setId(id);
+        shopService.updateShop(dto, merchantId);
+        return Result.success("更新成功", null);
+    }
+
+    /**
+     * 更新店铺状态
+     */
+    @Operation(summary = "更新状态", description = "更新店铺状态")
+    @PutMapping("/{id}/status")
+    public Result<Void> updateStatus(@PathVariable Long id, @RequestParam Integer status, HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        shopService.updateStatus(id, status, merchantId);
+        return Result.success("操作成功", null);
+    }
+
+    /**
+     * 删除店铺
+     */
+    @Operation(summary = "删除店铺", description = "删除店铺")
+    @DeleteMapping("/{id}")
+    public Result<Void> delete(@PathVariable Long id, HttpServletRequest request) {
+        Long merchantId = (Long) request.getAttribute("userId");
+        shopService.deleteShop(id, merchantId);
+        return Result.success("删除成功", null);
+    }
+}

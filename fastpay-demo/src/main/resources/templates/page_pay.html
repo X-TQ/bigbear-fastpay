@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面跳转支付 - FAST 易支付 Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 16px;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .pay-type-group {
+            display: flex;
+            gap: 12px;
+        }
+        .pay-type-item {
+            flex: 1;
+            padding: 16px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .pay-type-item:hover {
+            border-color: #667eea;
+        }
+        .pay-type-item.active {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        .pay-type-item input {
+            display: none;
+        }
+        .pay-type-item .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .pay-type-item .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .tips {
+            background: #fff7e6;
+            border: 1px solid #ffd591;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 13px;
+            color: #d46b08;
+        }
+        .tips h4 {
+            margin-bottom: 8px;
+        }
+        .tips ul {
+            margin-left: 20px;
+        }
+        .tips li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="back-btn">← 返回</a>
+            <h1>📄 页面跳转支付</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-title">创建订单</div>
+            <form action="/page-pay/submit" method="POST">
+                <div class="form-group">
+                    <label>商品名称</label>
+                    <input type="text" name="subject" value="测试商品" required>
+                </div>
+
+                <div class="form-group">
+                    <label>支付金额（元）</label>
+                    <input type="text" name="amount" value="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label>支付方式</label>
+                    <div class="pay-type-group">
+                        <label class="pay-type-item active" onclick="selectPayType(this)">
+                            <input type="radio" name="payType" value="wxpay" checked>
+                            <div class="icon">💚</div>
+                            <div class="name">微信支付</div>
+                        </label>
+                        <label class="pay-type-item" onclick="selectPayType(this)">
+                            <input type="radio" name="payType" value="alipay">
+                            <div class="icon">💙</div>
+                            <div class="name">支付宝</div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">立即支付</button>
+            </form>
+        </div>
+
+        <div class="tips">
+            <h4>💡 页面跳转支付说明</h4>
+            <ul>
+                <li>通过表单 POST 提交参数到支付网关</li>
+                <li>用户在支付页面完成支付</li>
+                <li>支付成功后跳转回商户指定的 returnUrl</li>
+                <li>同时系统会向 notifyUrl 发送异步通知</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function selectPayType(el) {
+            document.querySelectorAll('.pay-type-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            el.classList.add('active');
+            el.querySelector('input').checked = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST 易支付 - Java 对接 Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .logo p {
+            color: #666;
+            font-size: 14px;
+        }
+        .pay-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .pay-method {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .pay-method:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        .pay-method .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 16px;
+        }
+        .pay-method.page .icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        .pay-method.api .icon {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: #fff;
+        }
+        .pay-method .info h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        .pay-method .info p {
+            font-size: 13px;
+            color: #999;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>⚡ FAST 易支付</h1>
+            <p>Java 对接 Demo</p>
+        </div>
+
+        <div class="pay-methods">
+            <a href="/page-pay" class="pay-method page">
+                <div class="icon">📄</div>
+                <div class="info">
+                    <h3>页面跳转支付</h3>
+                    <p>通过表单 POST 提交跳转到支付页面</p>
+                </div>
+            </a>
+
+            <a href="/api-pay" class="pay-method api">
+                <div class="icon">🔌</div>
+                <div class="info">
+                    <h3>API 接口支付</h3>
+                    <p>后端调用 API 获取收款二维码</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>FAST 易支付 © 2025 by 大熊 Bigbear</p>
+        </div>
+    </div>
+</body>
+</html>

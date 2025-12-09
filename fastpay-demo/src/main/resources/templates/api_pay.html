@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 接口支付 - FAST 易支付 Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: #11998e;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 16px;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #11998e;
+        }
+        .pay-type-group {
+            display: flex;
+            gap: 12px;
+        }
+        .pay-type-item {
+            flex: 1;
+            padding: 16px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .pay-type-item:hover {
+            border-color: #11998e;
+        }
+        .pay-type-item.active {
+            border-color: #11998e;
+            background: #f0fff4;
+        }
+        .pay-type-item input {
+            display: none;
+        }
+        .pay-type-item .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .pay-type-item .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .tips {
+            background: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 13px;
+            color: #0050b3;
+        }
+        .tips h4 {
+            margin-bottom: 8px;
+        }
+        .tips ul {
+            margin-left: 20px;
+        }
+        .tips li {
+            margin-bottom: 4px;
+        }
+
+        /* 支付结果区域 */
+        .pay-result {
+            display: none;
+        }
+        .pay-result.show {
+            display: block;
+        }
+        .qrcode-wrapper {
+            text-align: center;
+            padding: 20px;
+        }
+        .qrcode-wrapper img {
+            max-width: 200px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+        }
+        .order-info {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .order-info p {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        .order-info p:last-child {
+            border-bottom: none;
+        }
+        .order-info .label {
+            color: #666;
+        }
+        .order-info .value {
+            color: #333;
+            font-weight: 500;
+        }
+        .status-checking {
+            text-align: center;
+            padding: 16px;
+            color: #666;
+            font-size: 14px;
+        }
+        .status-checking .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ddd;
+            border-top-color: #11998e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .pay-success {
+            text-align: center;
+            padding: 20px;
+        }
+        .pay-success .icon {
+            font-size: 60px;
+            margin-bottom: 16px;
+        }
+        .pay-success h3 {
+            color: #52c41a;
+            font-size: 20px;
+        }
+        .new-order-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #f5f5f5;
+            color: #666;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .new-order-btn:hover {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="back-btn">← 返回</a>
+            <h1>🔌 API 接口支付</h1>
+        </div>
+
+        <!-- 创建订单表单 -->
+        <div class="card" id="createOrderCard">
+            <div class="card-title">创建订单</div>
+            <form id="createOrderForm">
+                <div class="form-group">
+                    <label>商品名称</label>
+                    <input type="text" name="subject" value="测试商品" required>
+                </div>
+
+                <div class="form-group">
+                    <label>支付金额（元）</label>
+                    <input type="text" name="amount" value="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label>支付方式</label>
+                    <div class="pay-type-group">
+                        <label class="pay-type-item active" onclick="selectPayType(this)">
+                            <input type="radio" name="payType" value="wxpay" checked>
+                            <div class="icon">💚</div>
+                            <div class="name">微信支付</div>
+                        </label>
+                        <label class="pay-type-item" onclick="selectPayType(this)">
+                            <input type="radio" name="payType" value="alipay">
+                            <div class="icon">💙</div>
+                            <div class="name">支付宝</div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">创建订单</button>
+            </form>
+        </div>
+
+        <!-- 支付结果 -->
+        <div class="card pay-result" id="payResultCard">
+            <div class="card-title">扫码支付</div>
+            
+            <div class="qrcode-wrapper" id="qrcodeWrapper">
+                <img id="qrcodeImg" src="" alt="支付二维码">
+                <p style="margin-top: 12px; color: #666; font-size: 14px;">请使用<span id="payTypeName">微信</span>扫码支付</p>
+            </div>
+
+            <div class="order-info">
+                <p>
+                    <span class="label">商户订单号</span>
+                    <span class="value" id="outTradeNo">-</span>
+                </p>
+                <p>
+                    <span class="label">平台订单号</span>
+                    <span class="value" id="orderNo">-</span>
+                </p>
+                <p>
+                    <span class="label">订单金额</span>
+                    <span class="value" id="orderAmount">-</span>
+                </p>
+            </div>
+
+            <div class="status-checking" id="statusChecking">
+                <span class="spinner"></span>
+                正在等待支付...
+            </div>
+
+            <div class="pay-success" id="paySuccess" style="display: none;">
+                <div class="icon">✅</div>
+                <h3>支付成功</h3>
+                <button class="new-order-btn" onclick="newOrder()">创建新订单</button>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h4>💡 API 接口支付说明</h4>
+            <ul>
+                <li>后端调用 API 创建订单，获取收款二维码</li>
+                <li>前端展示二维码，用户扫码支付</li>
+                <li>可通过轮询或 WebSocket 获取支付结果</li>
+                <li>支付成功后系统会向 notifyUrl 发送异步通知</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentOutTradeNo = '';
+        let checkTimer = null;
+
+        function selectPayType(el) {
+            document.querySelectorAll('.pay-type-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            el.classList.add('active');
+            el.querySelector('input').checked = true;
+        }
+
+        // 创建订单
+        document.getElementById('createOrderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '创建中...';
+
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/api-pay/create', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showPayResult(result);
+                } else {
+                    alert('创建订单失败: ' + result.message);
+                }
+            } catch (error) {
+                alert('请求失败: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '创建订单';
+            }
+        });
+
+        // 显示支付结果
+        function showPayResult(result) {
+            const data = result.data;
+            currentOutTradeNo = result.outTradeNo;
+
+            // 生成二维码图片 URL（使用第三方 API）
+            const qrcodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(data.qrcodeUrl);
+            document.getElementById('qrcodeImg').src = qrcodeUrl;
+
+            // 显示订单信息
+            document.getElementById('outTradeNo').textContent = result.outTradeNo;
+            document.getElementById('orderNo').textContent = data.orderNo;
+            document.getElementById('orderAmount').textContent = '¥' + data.amount;
+
+            // 支付方式名称
+            const payType = document.querySelector('input[name="payType"]:checked').value;
+            document.getElementById('payTypeName').textContent = payType === 'wxpay' ? '微信' : '支付宝';
+
+            // 显示支付结果卡片
+            document.getElementById('createOrderCard').style.display = 'none';
+            document.getElementById('payResultCard').classList.add('show');
+            document.getElementById('qrcodeWrapper').style.display = 'block';
+            document.getElementById('statusChecking').style.display = 'block';
+            document.getElementById('paySuccess').style.display = 'none';
+
+            // 开始轮询订单状态
+            startCheckStatus();
+        }
+
+        // 轮询订单状态
+        function startCheckStatus() {
+            if (checkTimer) {
+                clearInterval(checkTimer);
+            }
+
+            checkTimer = setInterval(async () => {
+                try {
+                    const response = await fetch('/api-pay/query?outTradeNo=' + currentOutTradeNo);
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // 支付成功
+                        clearInterval(checkTimer);
+                        showPaySuccess();
+                    }
+                } catch (error) {
+                    console.error('查询订单状态失败:', error);
+                }
+            }, 3000); // 每 3 秒查询一次
+        }
+
+        // 显示支付成功
+        function showPaySuccess() {
+            document.getElementById('qrcodeWrapper').style.display = 'none';
+            document.getElementById('statusChecking').style.display = 'none';
+            document.getElementById('paySuccess').style.display = 'block';
+        }
+
+        // 创建新订单
+        function newOrder() {
+            if (checkTimer) {
+                clearInterval(checkTimer);
+            }
+            document.getElementById('createOrderCard').style.display = 'block';
+            document.getElementById('payResultCard').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
