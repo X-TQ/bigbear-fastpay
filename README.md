@@ -136,6 +136,26 @@ FAST 易支付是一款面向个人开发者和小型商户的**免签支付平�
   <img src="imags/管理后台-1控制台数据看板.png" width="100%" alt="管理后台-控制台数据看板">
 </p>
 
+## 监听软件配置
+Fastpay易支付使用的是开源监听工具是SmsForwarder。
+开源项目地址：https://gitee.com/pp/SmsForwarder
+### 通道配置
+<p align="center">
+  <img src="imags/通道配置.jpg" width="100%" alt="监听软件配置-通道配置">
+</p>
+<p align="center">
+  <img src="imags/通道配置2.jpg" width="100%" alt="监听软件配置-通道配置">
+</p>
+
+#### 转发规则配置
+
+<p align="center">
+  <img src="imags/规则1.jpg" width="100%" alt="监听软件配置-规则配置">
+</p>
+<p align="center">
+  <img src="imags/规则2.jpg" width="100%" alt="监听软件配置-规则配置">
+</p>
+
 ### 开发对接 Demo
 
 #### Demo 首页
