@@ -29,6 +29,12 @@ public class CreateOrderDTO {
     private String outTradeNo;
 
     /**
+     * 店铺编号不能为空
+     */
+    @NotBlank(message = "店铺编号不能为空")
+    private String shopNo;
+
+    /**
      * 订单金额（元）
      */
     @NotNull(message = "订单金额不能为空")

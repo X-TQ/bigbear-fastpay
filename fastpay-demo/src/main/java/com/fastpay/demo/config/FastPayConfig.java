@@ -18,6 +18,11 @@ public class FastPayConfig {
     private String merchantNo;
 
     /**
+     * 店铺编号
+     */
+    private String shopNo;
+
+    /**
      * API 密钥
      */
     private String apiSecret;

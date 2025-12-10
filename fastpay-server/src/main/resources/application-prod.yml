@@ -13,8 +13,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bigbear_fastpay?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-    username:
-    password:
+    username: root
+    password: QAZ330600
   
   # Jackson 配置
   jackson:

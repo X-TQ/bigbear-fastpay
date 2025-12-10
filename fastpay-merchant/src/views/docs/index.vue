@@ -417,6 +417,7 @@ const scrollToSection = (index) => {
 const pagePayParams = [
   { name: 'merchantNo', required: true, type: 'String', desc: '商户编号' },
   { name: 'outTradeNo', required: true, type: 'String', desc: '商户订单号（唯一）' },
+  { name: 'shopNo', required: true, type: 'String', desc: '店铺编号' },
   { name: 'amount', required: true, type: 'BigDecimal', desc: '订单金额（元），最小0.01' },
   { name: 'subject', required: true, type: 'String', desc: '商品名称/订单描述' },
   { name: 'payType', required: true, type: 'String', desc: '支付类型：wxpay-微信，alipay-支付宝' },
@@ -430,6 +431,7 @@ const pagePayParams = [
 const apiPayParams = [
   { name: 'merchantNo', required: true, type: 'String', desc: '商户编号' },
   { name: 'outTradeNo', required: true, type: 'String', desc: '商户订单号（唯一）' },
+  { name: 'shopNo', required: true, type: 'String', desc: '店铺编号' },
   { name: 'amount', required: true, type: 'BigDecimal', desc: '订单金额（元），最小0.01' },
   { name: 'subject', required: true, type: 'String', desc: '商品名称/订单描述' },
   { name: 'payType', required: true, type: 'String', desc: '支付类型：wxpay-微信，alipay-支付宝' },

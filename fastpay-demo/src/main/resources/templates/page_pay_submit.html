@@ -49,6 +49,7 @@
     <form id="payForm" th:action="${submitUrl}" method="POST" style="display: none;">
         <input type="hidden" name="merchantNo" th:value="${params.merchantNo}">
         <input type="hidden" name="outTradeNo" th:value="${params.outTradeNo}">
+        <input type="hidden" name="shopNo" th:value="${params.shopNo}">
         <input type="hidden" name="amount" th:value="${params.amount}">
         <input type="hidden" name="subject" th:value="${params.subject}">
         <input type="hidden" name="payType" th:value="${params.payType}">

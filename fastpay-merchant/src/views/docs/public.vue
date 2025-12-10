@@ -478,6 +478,7 @@ const scrollToSection = (index) => {
 const pagePayParams = [
   { name: 'merchantNo', required: true, type: 'String', desc: '商户编号' },
   { name: 'outTradeNo', required: true, type: 'String', desc: '商户订单号（唯一）' },
+  { name: 'shopNo', required: true, type: 'String', desc: '店铺编号' },
   { name: 'amount', required: true, type: 'String', desc: '订单金额（元），保留两位小数，如 10.00' },
   { name: 'subject', required: true, type: 'String', desc: '商品名称' },
   { name: 'payType', required: true, type: 'String', desc: '支付类型：wxpay（微信）/ alipay（支付宝）' },
@@ -492,6 +493,7 @@ const pagePayPhpCode = `// PHP 示例 - 生成签名并自动提交表单
 $params = [
     'merchantNo' => 'YOUR_MERCHANT_NO',
     'outTradeNo' => 'ORDER' . time(),
+    'shopNo' => 'YOUR_SHOP_NO',
     'amount' => '10.00',
     'subject' => '测试商品',
     'payType' => 'wxpay',
@@ -530,6 +532,7 @@ public class PagePayDemo {
         TreeMap params = new TreeMap();
         params.put("merchantNo", "YOUR_MERCHANT_NO");
         params.put("outTradeNo", "ORDER" + System.currentTimeMillis());
+        params.put("shopNo", "YOUR_SHOP_NO");
         params.put("amount", "10.00");
         params.put("subject", "测试商品");
         params.put("payType", "wxpay");
@@ -572,6 +575,7 @@ import html
 params = {
     'merchantNo': 'YOUR_MERCHANT_NO',
     'outTradeNo': f'ORDER{int(time.time())}',
+    'shopNo': 'YOUR_SHOP_NO',
     'amount': '10.00',
     'subject': '测试商品',
     'payType': 'wxpay',
@@ -601,6 +605,7 @@ print(form_html)`
 const apiPayParams = [
   { name: 'merchantNo', required: true, type: 'String', desc: '商户编号' },
   { name: 'outTradeNo', required: true, type: 'String', desc: '商户订单号（唯一）' },
+  { name: 'shopNo', required: true, type: 'String', desc: '店铺编号' },
   { name: 'amount', required: true, type: 'String', desc: '订单金额（元），保留两位小数' },
   { name: 'subject', required: true, type: 'String', desc: '商品名称' },
   { name: 'payType', required: true, type: 'String', desc: '支付类型：wxpay / alipay' },

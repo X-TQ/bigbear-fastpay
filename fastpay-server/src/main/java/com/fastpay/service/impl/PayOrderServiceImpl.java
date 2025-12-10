@@ -79,6 +79,7 @@ public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> i
         TreeMap<String, Object> signParams = new TreeMap<>();
         signParams.put("merchantNo", dto.getMerchantNo());
         signParams.put("outTradeNo", dto.getOutTradeNo());
+        signParams.put("shopNo", dto.getShopNo());
         signParams.put("payType", dto.getPayType());
         signParams.put("amount", dto.getAmount().toPlainString());
         signParams.put("subject", dto.getSubject());
@@ -110,7 +111,7 @@ public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> i
         }
 
         // 获取可用的收款二维码
-        PayQrcode qrcode = payQrcodeService.getAvailableQrcode(merchant.getId(), dto.getPayType());
+        PayQrcode qrcode = payQrcodeService.getAvailableQrcode(merchant.getId(),dto.getShopNo(), dto.getPayType());
         if (qrcode == null) {
             throw new BusinessException("暂无可用的收款通道，请联系商户");
         }
@@ -124,6 +125,8 @@ public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> i
         order.setOutTradeNo(dto.getOutTradeNo());
         order.setMerchantId(merchant.getId());
         order.setShopId(qrcode.getShopId());
+        order.setShopName(shop.getShopName());
+        order.setShopNo(shop.getShopNo());
         order.setQrcodeId(qrcode.getId());
         order.setPayType(qrcode.getPayType());
         order.setPayMethod(StringUtils.hasText(dto.getPayMethod()) ? dto.getPayMethod() : Constants.PayMethod.PAGE);

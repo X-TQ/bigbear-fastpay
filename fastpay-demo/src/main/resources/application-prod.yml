@@ -13,6 +13,8 @@ spring:
 fastpay:
   # 商户编号（在商户平台获取）
   merchant-no: M744163504226
+  # 店铺编号
+  shopNo: S745228666019
   # API 密钥（在商户平台获取）
   api-secret: 7c8cf40b280c4f33883bf21ea457d6d1
   # 支付网关地址

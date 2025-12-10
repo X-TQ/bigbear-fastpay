@@ -36,6 +36,7 @@ public class FastPayService {
         Map<String, Object> params = new HashMap<>();
         params.put("merchantNo", config.getMerchantNo());
         params.put("outTradeNo", outTradeNo);
+        params.put("shopNo", config.getShopNo());
         params.put("amount", amount);
         params.put("subject", subject);
         params.put("payType", payType);
@@ -61,6 +62,7 @@ public class FastPayService {
         Map<String, Object> params = new HashMap<>();
         params.put("merchantNo", config.getMerchantNo());
         params.put("outTradeNo", outTradeNo);
+        params.put("shopNo", config.getShopNo());
         params.put("amount", amount);
         params.put("subject", subject);
         params.put("payType", payType);

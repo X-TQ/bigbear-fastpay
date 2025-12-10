@@ -186,9 +186,15 @@ public class PayQrcodeServiceImpl extends ServiceImpl<PayQrcodeMapper, PayQrcode
     }
 
     @Override
-    public PayQrcode getAvailableQrcode(Long merchantId, String payType) {
+    public PayQrcode getAvailableQrcode(Long merchantId, String shopNo, String payType) {
+        final Shop shop = shopMapper.selectOne(new LambdaQueryWrapper<Shop>().eq(Shop::getShopNo, shopNo));
+        if (shop == null) {
+            throw new BusinessException("店铺不存在");
+        }
+
         LambdaQueryWrapper<PayQrcode> wrapper = new LambdaQueryWrapper<PayQrcode>()
                 .eq(PayQrcode::getMerchantId, merchantId)
+                .eq(PayQrcode::getShopId, shop.getId())
                 .eq(PayQrcode::getStatus, Constants.Status.ENABLED)
                 .orderByDesc(PayQrcode::getSortWeight)
                 .orderByAsc(PayQrcode::getTotalCount)  // 优先使用次数少的

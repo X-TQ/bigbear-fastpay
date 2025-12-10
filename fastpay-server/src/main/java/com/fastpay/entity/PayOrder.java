@@ -148,4 +148,10 @@ public class PayOrder implements Serializable {
      */
     @TableField(exist = false)
     private String shopName;
+
+    /**
+     * 店铺编码（非数据库字段）
+     */
+    @TableField(exist = false)
+    private String shopNo;
 }
